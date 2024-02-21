@@ -34,7 +34,7 @@ function handleRequest(req, res) {
 		res.writeHead(200, { "Content-Type": "application/json" });
 
 		console.log(`\n${new Date().toLocaleString("pt-BR")}`);
-		console.log(`IP[${req.ip}] [${res.statusCode}]`);
+		console.log(`IP[${req.connection.remoteAddress}] [${res.statusCode}]`);
 
 		setTimeout(() => {
 			const objCount = getObjCount(req.url);
