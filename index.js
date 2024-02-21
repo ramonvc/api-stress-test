@@ -33,6 +33,9 @@ function handleRequest(req, res) {
 	if (req.url.startsWith("/stress-test")) {
 		res.writeHead(200, { "Content-Type": "application/json" });
 
+		console.log(`\n${new Date().toLocaleString("pt-BR")}`);
+		console.log(`IP[${req.ip}] [${res.statusCode}]`);
+
 		setTimeout(() => {
 			const objCount = getObjCount(req.url);
 			const randomObjects = generateRandomObjects(objCount);
@@ -47,5 +50,5 @@ function handleRequest(req, res) {
 const server = http.createServer(handleRequest);
 
 server.listen(port, hostname, () => {
-    console.log(`Stress test endpoint: http://${hostname}:${port}/stress-test?count=1000`);
+	console.log(`Stress test endpoint: http://${hostname}:${port}/stress-test?count=1000`);
 });
